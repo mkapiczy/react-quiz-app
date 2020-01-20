@@ -4,8 +4,14 @@ import './index.scss';
 import App from './components/App';
 import {BrowserRouter as Router} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.css';
+import configureStore from "./redux/configureStore";
+import {Provider as ReactProvider} from 'react-redux'
 
+const store = configureStore()
 ReactDOM.render(
-    <Router>
-        <App/>
-    </Router>, document.getElementById('root'));
+    <ReactProvider store={store}>
+        <Router>
+            <App/>
+        </Router>
+    </ReactProvider>,
+    document.getElementById('root'));
