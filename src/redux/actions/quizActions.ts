@@ -1,8 +1,8 @@
-import {CREATE_COURSE, QuizActionTypes} from "../types";
+import {CREATE_QUIZ, QuizActionTypes} from "./actionTypes";
 import {Quiz} from "../../types";
 
 const createQuiz = (quiz: Quiz): QuizActionTypes => {
-    return {type: CREATE_COURSE, payload: quiz}
+    return {type: CREATE_QUIZ, payload: quiz}
 }
 
 export {

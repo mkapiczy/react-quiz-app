@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {connect, ConnectedProps} from "react-redux";
 import {QuizState} from "../../types";
 import * as quizActions from "../../redux/actions/quizActions"
-import {useDispatch} from "react-redux";
+import {bindActionCreators, Dispatch} from "redux";
 
 interface SingleQuizState {
     quiz: {
@@ -18,7 +18,6 @@ const Quiz: React.FC<Props> = (props: Props) => {
             title: ""
         }
     })
-    const dispatch = useDispatch()
 
     const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
         const quiz = {...state.quiz, title: event.currentTarget.value}
@@ -27,20 +26,22 @@ const Quiz: React.FC<Props> = (props: Props) => {
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
-        dispatch(quizActions.createQuiz(state.quiz))
-        const quiz = {...state.quiz, title: ""}
+        const quiz = {...state.quiz, id: 0, title: "", questions: []}
+        props.actions.createQuiz(quiz)
         setState({quiz})
     }
 
     return (
-        <div className="jumbotron">
-            <h1>Quiz</h1>
-            <p>This is a quiz from Javascript</p>
-            <form onSubmit={handleSubmit}>
-                <h3>Add course</h3>
-                <input type="text" onChange={handleChange} value={state.quiz.title}/>
-                <input type="submit" value="Save"/>
-            </form>
+        <div className="container-fluid">
+            <div className="jumbotron">
+                <div className="row text-center">
+                    <div className="col-md-2 col-sm-12" style={{margin: "auto"}}><p className="h3">Quiz</p></div>
+                    <div className="col-md-10 col-sm-12" style={{margin: "auto"}}><p>This is a quiz from Javascript</p></div>
+                </div>
+            </div>
+            <div className="container">
+               Test
+            </div>
         </div>
     )
 }
@@ -52,5 +53,11 @@ const mapStateToProps = (state: QuizState) => {
     }
 }
 
-const connectStateAndProps = connect(mapStateToProps)
+const mapDispatchToProps = (dispatch: Dispatch) => {
+    return {
+        actions: bindActionCreators(quizActions, dispatch)
+    }
+}
+
+const connectStateAndProps = connect(mapStateToProps, mapDispatchToProps)
 export default connectStateAndProps(Quiz);

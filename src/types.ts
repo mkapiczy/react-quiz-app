@@ -1,5 +1,19 @@
+export interface Answer {
+    id: number,
+    value: string
+}
+
+export interface Question {
+    id: number,
+    value: string,
+    answers: Array<Answer>
+    correctAnswerId?: number
+}
+
 export interface Quiz {
-    title: string
+    id: number,
+    title: string,
+    questions: Array<Question>
 }
 
 export interface QuizState {
