@@ -35,12 +35,12 @@ const Quiz: React.FC<Props> = (props: Props) => {
         <div className="container-fluid">
             <div className="jumbotron">
                 <div className="row text-center">
-                    <div className="col-md-2 col-sm-12" style={{margin: "auto"}}><p className="h3">Quiz</p></div>
-                    <div className="col-md-10 col-sm-12" style={{margin: "auto"}}><p>This is a quiz from Javascript</p></div>
+                    <div className="col-md-2 col-sm-12"><p className="h3">Quiz</p></div>
+                    <div className="col-md-10 col-sm-12"><p>This is a quiz from Javascript</p></div>
                 </div>
             </div>
             <div className="container">
-               Test
+                Test
             </div>
         </div>
     )

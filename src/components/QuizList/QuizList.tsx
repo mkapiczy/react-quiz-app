@@ -7,8 +7,13 @@ type Props = PropsFromRedux
 
 const QuizList: React.FC<Props> = (props: Props) => {
     return (
-        <div className="jumbotron">
-            <h1>Quiz List</h1>
+        <div className="container-fluid">
+            <div className="jumbotron">
+                <div className="row">
+                    <div className="col-md-2 col-sm-12"><p className="h3">Quiz List</p></div>
+                    <div className="col-md-10 col-sm-12"><p>Select quiz you're interested in!</p></div>
+                </div>
+            </div>
             <ol>
                 {props.quizzes ? props.quizzes.map((q) => <li key={q.title}>{q.title}</li>) : "No quizzes"}
             </ol>
