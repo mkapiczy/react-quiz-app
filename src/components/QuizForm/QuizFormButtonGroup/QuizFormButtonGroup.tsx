@@ -8,12 +8,12 @@ interface Props {
     goToNextQuesion: () => void,
     deleteQuestion: () => void,
     addQuestion: () => void,
-    saveQuiz: () => void
+    saveQuiz: () => void,
 }
 
 const QuizFormButtonGroup: React.FC<Props> = (props: Props) => {
-    const isPreviousQuestionDisabled = () => props.currentQuestionId <= 0
-    const isNextQuestionDisabled = () => props.currentQuestionId >= props.totalNumberOfQuestions - 1
+    const isPreviousQuestionDisabled = () => props.currentQuestionId <= 1
+    const isNextQuestionDisabled = () => props.currentQuestionId >= props.totalNumberOfQuestions
     const isDeleteQuestionDisabled = () => props.totalNumberOfQuestions === 1
     return (
         <div className="container buttons">
