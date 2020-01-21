@@ -18,4 +18,7 @@ export interface Quiz {
 
 export interface QuizState {
     quizzes: Quiz[]
+    quiz: Quiz
 }
+
+export type AppState = QuizState
