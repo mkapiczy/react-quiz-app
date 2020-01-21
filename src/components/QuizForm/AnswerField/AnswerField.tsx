@@ -21,8 +21,11 @@ const AnswerField: React.FC<Props> = (props: Props) => {
             <li className="list-group-item">
                 <div className="input-group">
                     <div className="input-group-prepend">
-                        <span className={classNames("input-group-text", {"selected": props.isCorrect})}
-                              onClick={() => props.onIsCorrectChanged(props.answer.id)}>{props.answer.id}</span>
+                        <div className={classNames('input-group-text', {"selected": props.isCorrect})}>
+                            <span className="answer-id">{props.answer.id}</span>
+                            <input type="radio" checked={props.isCorrect}
+                                   onChange={() => props.onIsCorrectChanged(props.answer.id)}/>
+                        </div>
                     </div>
                     <input className="form-control" type="text" value={props.answer.value}
                            onChange={handleAnswerValueChange} placeholder={`Answer ${props.answer.id}`}/>

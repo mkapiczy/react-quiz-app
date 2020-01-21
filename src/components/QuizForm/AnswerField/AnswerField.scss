@@ -2,15 +2,15 @@
   width: 100%;
 
   .input-group-text {
-    margin-right: 5%;
+    margin-right: 10%;
+
+    .answer-id {
+      margin-right: 10px;
+    }
 
     &.selected {
-      background-color: #28A745 !important;
+      background-color: #01d500 !important;
     }
-  }
-
-  .form-control {
-    width: 80%;
   }
 }
 
