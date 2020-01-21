@@ -4,8 +4,8 @@
   .input-group-text {
     margin-right: 5%;
 
-    .selected {
-      background-color: #28A745;
+    &.selected {
+      background-color: #28A745 !important;
     }
   }
 
