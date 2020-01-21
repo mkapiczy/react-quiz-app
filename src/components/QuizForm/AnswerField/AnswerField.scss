@@ -1,0 +1,16 @@
+.list-group-item {
+  width: 100%;
+
+  .input-group-text {
+    margin-right: 5%;
+
+    .selected {
+      background-color: #28A745;
+    }
+  }
+
+  .form-control {
+    width: 80%;
+  }
+}
+

@@ -4,7 +4,7 @@ import Header from "./Header/Header";
 import {Route} from "react-router-dom"
 import Quiz from "./Quiz/Quiz";
 import QuizList from "./QuizList/QuizList";
-import NewQuiz from "./NewQuiz/NewQuiz";
+import NewQuiz from "./QuizForm/QuizForm";
 
 const App: React.FC = () => {
     return (
