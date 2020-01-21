@@ -1,46 +1,54 @@
 import React, {useState} from 'react';
 import {connect, ConnectedProps} from "react-redux";
-import {QuizState} from "../../types";
+import {Answer, QuizState} from "../../types";
 import * as quizActions from "../../redux/actions/quizActions"
 import {bindActionCreators, Dispatch} from "redux";
-
-interface SingleQuizState {
-    quiz: {
-        title: string
-    }
-}
+import QuestionDisplay from "./QuestionDisplay/QuestionDisplay";
+import QuizButtonGroup from "./QuizButtonGroup/QuizButtonGroup";
+import QuizHeading from "./QuizHeading/QuizHeading";
 
 type PropsFromRedux = ConnectedProps<typeof connectStateAndProps>
 type Props = PropsFromRedux
 const Quiz: React.FC<Props> = (props: Props) => {
-    const [state, setState] = useState<SingleQuizState>({
-        quiz: {
-            title: ""
-        }
-    })
+    const [currentQuestionIdx, setCurrentQuestionIdx] = useState(0)
+    const [selectedAnswer, setSelectedAnswer] = useState<Answer | null>(null)
+    const [score, setScore] = useState(0)
+    const isAnswerCorrect = (answer: Answer | null): boolean => answer !== null && answer.id === props.selectedQuiz.questions[currentQuestionIdx].correctAnswerId
 
-    const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
-        const quiz = {...state.quiz, title: event.currentTarget.value}
-        setState({quiz})
+    const nextQuestion = () => {
+        setSelectedAnswer(null)
+        setCurrentQuestionIdx(currentQuestionIdx + 1)
     }
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault()
-        const quiz = {...state.quiz, id: 0, title: "", questions: []}
-        props.actions.createQuiz(quiz)
-        setState({quiz})
+    const onAnswerSelect = (answer: Answer) => {
+        setSelectedAnswer(answer)
+        if (isAnswerCorrect(answer)) {
+            setScore(score + 1)
+        }
+
+    }
+
+    const finishQuiz = () => {
+        alert(`Score ${score}/${props.selectedQuiz.questions.length}`)
     }
 
     return (
         <div className="container-fluid">
-            <div className="jumbotron">
-                <div className="row text-center">
-                    <div className="col-md-2 col-sm-12"><p className="h3">Quiz</p></div>
-                    <div className="col-md-10 col-sm-12"><p>This is a quiz from Javascript</p></div>
+            <QuizHeading title={props.selectedQuiz.title}/>
+            <div className="container questions">
+                <div className="row">
+                    <QuestionDisplay question={props.selectedQuiz.questions[currentQuestionIdx]}
+                                     totalNumberOfQuestions={props.selectedQuiz.questions.length}
+                                     selectedAnswer={selectedAnswer} isAnswerCorrect={isAnswerCorrect(selectedAnswer)}
+                                     onAnswerSelect={onAnswerSelect}
+                    />
                 </div>
-            </div>
-            <div className="container">
-                Test
+                <div className="row">
+                    <QuizButtonGroup currentQuestionIdx={currentQuestionIdx}
+                                     numberOfQuestions={props.selectedQuiz.questions.length}
+                                     areButtonsDisabled={selectedAnswer === null}
+                                     onNextQuestion={nextQuestion} onFinishQuiz={finishQuiz}/>
+                </div>
             </div>
         </div>
     )
@@ -49,7 +57,8 @@ const Quiz: React.FC<Props> = (props: Props) => {
 const mapStateToProps = (state: QuizState) => {
     console.log("mapStateToProps", state)
     return {
-        quizzes: state.quizzes
+        quizzes: state.quizzes,
+        selectedQuiz: state.quiz
     }
 }
 

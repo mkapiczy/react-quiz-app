@@ -1,4 +1,4 @@
-import './QuestionField.scss'
+import './QuestionFormField.scss'
 import React, {ChangeEvent} from 'react';
 import AnswerField from "../AnswerField/AnswerField";
 import {Answer, Question} from "../../../types";
@@ -10,7 +10,7 @@ interface Props {
     onQuestionChange: (question: Question) => void
 }
 
-const QuestionField: React.FC<Props> = (props: Props) => {
+const QuestionFormField: React.FC<Props> = (props: Props) => {
     const handleQuestionTitleChange = (event: ChangeEvent<HTMLInputElement>) => {
         props.onQuestionChange({...props.question, value: event.currentTarget.value})
     }
@@ -35,9 +35,9 @@ const QuestionField: React.FC<Props> = (props: Props) => {
         <div className="container-fluid">
             <div className="row form-group">
                 <label htmlFor="questionTitleInput">
-                    Question ({props.question.id}/{props.totalNumberOfQuestions})
+                    QuestionField ({props.question.id}/{props.totalNumberOfQuestions})
                 </label>
-                <input type="text" className="form-control" id="questionTitleInput" placeholder="Question"
+                <input type="text" className="form-control" id="questionTitleInput" placeholder="QuestionField"
                        value={props.question.value} onChange={handleQuestionTitleChange}/>
             </div>
             <ol className="list-group list-group-flush answers-list">
@@ -49,4 +49,4 @@ const QuestionField: React.FC<Props> = (props: Props) => {
     )
 }
 
-export default QuestionField
+export default QuestionFormField

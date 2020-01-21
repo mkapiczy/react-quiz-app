@@ -79,7 +79,7 @@ const QuizForm: React.FC<Props> = (props: Props) => {
     }
 
     return (
-        <div id="quizForm" className="container-fluid h-100">
+        <div id="quizForm" className="container-fluid">
             <QuizFormHeading quizTitle={quiz.title} onQuizTitleChange={handleQuizTitleChange} isValid={isValid}
                              onCloseTooltip={resetIsValid}/>
             <QuestionsForm question={quiz.questions[currentQuestionId - 1]}

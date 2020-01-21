@@ -1,4 +1,4 @@
-import QuestionField from "../QuestionField/QuestionField";
+import QuestionFormField from "../QuestionField/QuestionFormField";
 import React from "react";
 import {Question} from "../../../types";
 
@@ -13,8 +13,8 @@ const QuestionsForm: React.FC<Props> = (props: Props) => {
     return (
         <div className="container questions">
             <div className="row">
-                <QuestionField question={props.question} totalNumberOfQuestions={props.totalNumberOfQuestions}
-                               onQuestionChange={props.onQuestionChange}/>
+                <QuestionFormField question={props.question} totalNumberOfQuestions={props.totalNumberOfQuestions}
+                                   onQuestionChange={props.onQuestionChange}/>
             </div>
         </div>
     )
