@@ -8,11 +8,13 @@ import NewQuiz from "./QuizForm/QuizForm";
 
 const App: React.FC = () => {
     return (
-        <div className="container-fluid">
+        <div id="app" className="container-fluid">
             <Header/>
-            <Route exact path="/" component={Quiz}/>
-            <Route exact path="/list" component={QuizList}/>
-            <Route exact path="/quiz/new" component={NewQuiz}/>
+            <div className="container-fluid main-content">
+                <Route exact path="/" component={Quiz}/>
+                <Route exact path="/list" component={QuizList}/>
+                <Route exact path="/quiz/new" component={NewQuiz}/>
+            </div>
         </div>
     );
 }
