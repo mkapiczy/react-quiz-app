@@ -1,3 +1,4 @@
+import './QuizTitleCardField.scss'
 import classNames from "classnames";
 import React, {ChangeEvent} from "react";
 
@@ -19,9 +20,9 @@ const QuizTitleCardField: React.FC<Props> = (props: Props) => {
                        id="quizTitleInput" value={props.quizTitle} onChange={props.handleQuizTitleChange}/>
                 <div className="invalid-tooltip">
                     <button className="btn cancel" onClick={props.onCancelTooltip}>x</button>
-                    <p id="tooltipText" className="font-weight-bold"> Please make sure that the quiz title together with
-                        all
-                        questions and answers are filled and that a correct answer for every question is selected!
+                    <p id="tooltipText" className="font-weight-bold"> Please make sure that you have filled the quiz
+                        title,
+                        all questions and answers and that a correct answer for every question is selected!
                     </p>
                 </div>
             </div>
