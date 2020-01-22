@@ -83,15 +83,18 @@ const QuizForm: React.FC<Props> = (props: Props) => {
         <div id="quizForm" className="container-fluid">
             <QuizFormHeading quizTitle={quiz.title} onQuizTitleChange={handleQuizTitleChange} isValid={isValid}
                              onCloseTooltip={resetIsValid}/>
-            <QuizTitleCardField isValid={isValid} quizTitle={quiz.title} handleQuizTitleChange={handleQuizTitleChange}
-                                onCancelTooltip={resetIsValid}/>
-            <QuestionFormField question={quiz.questions[currentQuestionId - 1]}
-                           totalNumberOfQuestions={quiz.questions.length}
-                           onQuestionChange={handleQuestionChange}/>
+            <div className="container questions">
+                <QuizTitleCardField isValid={isValid} quizTitle={quiz.title}
+                                    handleQuizTitleChange={handleQuizTitleChange}
+                                    onCancelTooltip={resetIsValid}/>
+                <QuestionFormField question={quiz.questions[currentQuestionId - 1]}
+                                   totalNumberOfQuestions={quiz.questions.length}
+                                   onQuestionChange={handleQuestionChange}/>
+
             <QuizFormButtonGroup currentQuestionId={currentQuestionId} totalNumberOfQuestions={quiz.questions.length}
                                  goToPreviousQuestion={prevQuestion} goToNextQuesion={nextQuestion}
                                  deleteQuestion={deleteQuestion} addQuestion={addQuestion} saveQuiz={saveQuiz}/>
-
+            </div>
         </div>
     )
 }

@@ -33,9 +33,7 @@ const QuizFormButtonGroup: React.FC<Props> = (props: Props) => {
                         Next Question
                     </button>
                 </div>
-
             </div>
-
             <div className="row second-row">
                 <div className="col text-center">
                     <button type="button" className="btn btn-dark mb-2 btn-with-margin"
