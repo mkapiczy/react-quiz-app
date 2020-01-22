@@ -1,9 +1,11 @@
+import './QuizList.scss'
 import React from 'react';
 import {QuizState} from "../../types";
 import {connect, ConnectedProps} from "react-redux";
 import {bindActionCreators, Dispatch} from "redux";
 import * as quizActions from "../../redux/actions/quizActions";
 import {useHistory} from 'react-router-dom'
+import QuizListHeading from "./QuizListHeading";
 
 type PropsFromRedux = ConnectedProps<typeof connectStateAndProps>
 type Props = PropsFromRedux
@@ -13,24 +15,19 @@ const QuizList: React.FC<Props> = (props: Props) => {
 
     const selectQuiz = (quizId: number) => {
         props.actions.selectQuiz(quizId)
-        history.push('/')
+        history.push('/quiz')
     }
     return (
         <div className="container-fluid">
-            <div className="jumbotron">
-                <div className="row">
-                    <div className="col-md-2 col-sm-12"><p className="h3">Quiz List</p></div>
-                    <div className="col-md-10 col-sm-12"><p>Select quiz you're interested in!</p></div>
-                </div>
+            <QuizListHeading/>
+            <div className="list-group" style={{width: "50%", marginLeft: "auto", marginRight: "auto"}}>
+                {props.quizzes ? props.quizzes.map((q) =>
+                    <a href="#" className="list-group-item list-group-item-action" onClick={() => selectQuiz(q.id)}>
+                        {q.title}
+                        <span className="badge badge-pill badge-primary pull-right">{ Math.floor(Math.random() * (100 - 0 + 1) + 0)}</span>
+                    </a>
+                ) : "No quizzes"}
             </div>
-            <ol className="list-group">
-                {props.quizzes ? props.quizzes.map((q) => <a href="#"
-                                                             className="list-group-item list-group-item-action"
-                                                             key={q.title}
-                                                             onClick={() => selectQuiz(q.id)}>
-                    {q.title}
-                </a>) : "No quizzes"}
-            </ol>
         </div>
     )
 }
