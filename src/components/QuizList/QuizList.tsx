@@ -18,17 +18,17 @@ const QuizList: React.FC<Props> = (props: Props) => {
             <div className="list-group" style={{width: "50%", marginLeft: "auto", marginRight: "auto"}}>
                 <div className="list-group-item font-weight-bold list-group-item-dark">
                     <div className="row">
-                        <div className="col-11">Quiz Title</div>
-                        <div className="col-1">Rating</div>
+                        <div className="col-lg-10 col-md-9">Quiz Title</div>
+                        <div className="col-lg-2 col-md-3">Rating</div>
                     </div>
                 </div>
                 {props.quizzes ? props.quizzes.map((q) =>
                     <NavLink to={`/quiz/${q.id}`} exact>
                         <div className="list-group-item list-group-item-action">
                             <div className="row">
-                                <div className="col-11">{q.title}</div>
-                                <div className="col-1"><span
-                                    className="badge badge-pill badge-primary pull-right">{Math.floor(Math.random() * (100 - 0 + 1) + 0)}</span>
+                                <div className="col-lg-10 col-md-9">{q.title}</div>
+                                <div className="col-lg-2 col-md-3">
+                                    <span className="badge badge-pill badge-primary">{Math.floor(Math.random() * (100 - 0 + 1) + 0)}</span>
                                 </div>
                             </div>
                         </div>
