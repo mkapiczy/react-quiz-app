@@ -5,7 +5,8 @@ import {NavLink} from "react-router-dom";
 interface Props {
     score: number,
     maximum: number,
-    resetQuiz: () => void
+    resetQuiz: () => void,
+    quizId: number
 }
 
 const VictoryView: React.FC<Props> = (props: Props) => {
@@ -32,12 +33,12 @@ const VictoryView: React.FC<Props> = (props: Props) => {
             <div className="container" style={{marginTop: "5vmin"}}>
                 <div className="row">
                     <div className="col text-center">
-                        <NavLink to="/quiz/" onClick={props.resetQuiz} exact>
+                        <NavLink to={`/quiz/${props.quizId}`} onClick={props.resetQuiz} exact>
                                 Retake the quiz
                         </NavLink>
                     </div>
                     <div className="col text-center">
-                        <NavLink to="/quiz/list" exact>
+                        <NavLink to="/quiz-list" exact>
                            Go back to quiz list
                         </NavLink>
                     </div>

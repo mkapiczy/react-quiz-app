@@ -6,7 +6,7 @@ const Header: React.FC = () => {
 
     return (
         <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <a className="navbar-brand" href="#">Quiz App</a>
+            <a className="navbar-brand" href="/">Quiz App</a>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
@@ -17,10 +17,10 @@ const Header: React.FC = () => {
                         <NavLink to="/" activeStyle={activeStyle} exact>Home Page</NavLink>
                     </li>
                     <li className="nav-item nav-link">
-                        <NavLink to="/quiz/list" activeStyle={activeStyle} exact>Quiz List</NavLink>
+                        <NavLink to="/quiz-list" activeStyle={activeStyle} exact>Quiz List</NavLink>
                     </li>
                     <li className="nav-item nav-link">
-                        <NavLink to="/quiz/new" activeStyle={activeStyle} exact>New Quiz</NavLink>
+                        <NavLink to="/new-quiz" activeStyle={activeStyle} exact>New Quiz</NavLink>
                     </li>
                     <li className="nav-item nav-link">
                         <NavLink to="/quiz/random" activeStyle={activeStyle} exact>Random Quiz</NavLink>

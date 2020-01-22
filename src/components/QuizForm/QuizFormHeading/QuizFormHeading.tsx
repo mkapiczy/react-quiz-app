@@ -1,6 +1,5 @@
 import './QuizFormHeading.scss'
 import React, {ChangeEvent} from "react";
-import classNames from "classnames";
 
 interface Props {
     quizTitle: string,

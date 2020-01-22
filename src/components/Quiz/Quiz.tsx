@@ -1,21 +1,33 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import {useParams} from 'react-router-dom'
 import {connect, ConnectedProps} from "react-redux";
-import {Answer, QuizState} from "../../types";
+import {Answer, Quiz as QuizType, QuizState} from "../../types";
 import * as quizActions from "../../redux/actions/quizActions"
 import {bindActionCreators, Dispatch} from "redux";
 import QuestionDisplay from "./QuestionDisplay/QuestionDisplay";
 import QuizButtonGroup from "./QuizButtonGroup/QuizButtonGroup";
 import QuizHeading from "./QuizHeading/QuizHeading";
 import VictoryView from "./VictoryView/VictoryView";
+import _ from 'lodash'
 
 type PropsFromRedux = ConnectedProps<typeof connectStateAndProps>
 type Props = PropsFromRedux
+
+
 const Quiz: React.FC<Props> = (props: Props) => {
+    const [selectedQuiz, setSelectedQuiz] = useState<QuizType | null>(null)
     const [currentQuestionIdx, setCurrentQuestionIdx] = useState(0)
     const [selectedAnswer, setSelectedAnswer] = useState<Answer | null>(null)
     const [score, setScore] = useState(0)
     const [isFinished, setIsFinished] = useState(false)
-    const isAnswerCorrect = (answer: Answer | null): boolean => answer !== null && answer.id === props.selectedQuiz.questions[currentQuestionIdx].correctAnswerId
+    const isAnswerCorrect = (answer: Answer | null): boolean => answer !== null && selectedQuiz !== null && answer.id === selectedQuiz.questions[currentQuestionIdx].correctAnswerId
+    const {quizId} = useParams()
+
+    useEffect(() => {
+        if (quizId) {
+            setSelectedQuiz(_.find(props.quizzes, {id: parseInt(quizId)}) || null)
+        }
+    }, [])
 
     const nextQuestion = () => {
         setSelectedAnswer(null)
@@ -40,15 +52,19 @@ const Quiz: React.FC<Props> = (props: Props) => {
         setSelectedAnswer(null)
     }
 
+    if (selectedQuiz === null) {
+        return null
+    }
     return (
         <div className="container-fluid">
-            <QuizHeading title={props.selectedQuiz.title}/>
+            <QuizHeading title={selectedQuiz.title}/>
             {isFinished ?
-                <VictoryView score={score} maximum={props.selectedQuiz.questions.length} resetQuiz={resetQuiz}/> :
+                <VictoryView score={score} maximum={selectedQuiz.questions.length} resetQuiz={resetQuiz}
+                             quizId={selectedQuiz.id}/> :
                 <div className="container questions">
                     <div className="row">
-                        <QuestionDisplay question={props.selectedQuiz.questions[currentQuestionIdx]}
-                                         totalNumberOfQuestions={props.selectedQuiz.questions.length}
+                        <QuestionDisplay question={selectedQuiz.questions[currentQuestionIdx]}
+                                         totalNumberOfQuestions={selectedQuiz.questions.length}
                                          selectedAnswer={selectedAnswer}
                                          isAnswerCorrect={isAnswerCorrect(selectedAnswer)}
                                          onAnswerSelect={onAnswerSelect}
@@ -56,7 +72,7 @@ const Quiz: React.FC<Props> = (props: Props) => {
                     </div>
                     <div className="row">
                         <QuizButtonGroup currentQuestionIdx={currentQuestionIdx}
-                                         numberOfQuestions={props.selectedQuiz.questions.length}
+                                         numberOfQuestions={selectedQuiz.questions.length}
                                          areButtonsDisabled={selectedAnswer === null}
                                          onNextQuestion={nextQuestion} onFinishQuiz={finishQuiz}/>
                     </div>
@@ -67,10 +83,8 @@ const Quiz: React.FC<Props> = (props: Props) => {
 }
 
 const mapStateToProps = (state: QuizState) => {
-    console.log("mapStateToProps", state)
     return {
-        quizzes: state.quizzes,
-        selectedQuiz: state.quiz
+        quizzes: state.quizzes
     }
 }
 

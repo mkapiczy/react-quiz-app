@@ -13,9 +13,9 @@ const App: React.FC = () => {
             <Header/>
             <div className="container-fluid main-content">
                 <Route exact path="/" component={HomePage}/>
-                <Route exact path="/quiz" component={Quiz}/>
-                <Route exact path="/quiz/list" component={QuizList}/>
-                <Route exact path="/quiz/new" component={NewQuiz}/>
+                <Route exact path="/quiz/:quizId" component={Quiz}/>
+                <Route exact path="/quiz-list/" component={QuizList}/>
+                <Route exact path="/new-quiz" component={NewQuiz}/>
             </div>
         </div>
     );

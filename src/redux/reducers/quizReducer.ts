@@ -1,4 +1,4 @@
-import {CREATE_QUIZ, QuizActionTypes, SELECT_QUIZ} from "../actions/actionTypes";
+import {CREATE_QUIZ, QuizActionTypes} from "../actions/actionTypes";
 import {AppState, QuizState} from "../../types";
 
 const initialState: QuizState = {
@@ -23,8 +23,7 @@ const initialState: QuizState = {
                 }],
                 correctAnswerId: 2
             }]
-    }, {id: 1, title: 'Quiz 1', questions: []}],
-    quiz: {id: 0, title: '', questions: []}
+    }, {id: 1, title: 'Quiz 1', questions: []}]
 }
 const quizReducer = (state: AppState = initialState, action: QuizActionTypes): AppState => {
     switch (action.type) {
@@ -32,11 +31,6 @@ const quizReducer = (state: AppState = initialState, action: QuizActionTypes): A
             return {
                 ...state,
                 quizzes: [...state.quizzes, action.payload]
-            }
-        case SELECT_QUIZ:
-            return {
-                ...state,
-                quiz: state.quizzes[action.payload]
             }
         default:
             return state

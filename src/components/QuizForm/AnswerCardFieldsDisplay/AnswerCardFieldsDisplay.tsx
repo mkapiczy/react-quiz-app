@@ -1,5 +1,5 @@
 import _ from "lodash";
-import React, {ChangeEvent} from "react";
+import React from "react";
 import {Answer, Question} from "../../../types";
 import AnswerCardField2 from "../AnswerCardField/AnswerCardField";
 
@@ -10,10 +10,6 @@ interface Props {
 }
 
 const AnswerCardFieldsDisplay: React.FC<Props> = (props: Props) => {
-
-    const handleQuestionTitleChange = (event: ChangeEvent<HTMLInputElement>) => {
-        props.onQuestionChange({...props.question, value: event.currentTarget.value})
-    }
 
     const handleAnswerChange = (answer: Answer): void => {
         props.onQuestionChange({

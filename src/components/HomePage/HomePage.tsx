@@ -10,7 +10,7 @@ const HomePage: React.FC = () => {
                 <div className="row card-row">
                     <div className="card bg-light home-card text-center">
                         <div className="card-header font-weight-bold">
-                            <NavLink to="/quiz/list" exact>Take one of our quizzes</NavLink>
+                            <NavLink to="/quiz-list" exact>Take one of our quizzes</NavLink>
                         </div>
                         <div className="card-body ">
                             Check out our list of available quizzes.
@@ -20,7 +20,7 @@ const HomePage: React.FC = () => {
                 <div className="row card-row">
                     <div className="card bg-light home-card text-center">
                         <div className="card-header font-weight-bold">
-                            <NavLink to="/quiz/new" exact>Create your own quiz</NavLink>
+                            <NavLink to="/new-quiz" exact>Create your own quiz</NavLink>
                         </div>
                         <div className="card-body">
                             Create your own custom set of questions and answers!
