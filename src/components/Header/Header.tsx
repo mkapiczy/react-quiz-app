@@ -1,33 +1,38 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
+import {Nav, Navbar} from "react-bootstrap";
 
 const Header: React.FC = () => {
-    const activeStyle = {color: "#F15B2A"}
 
     return (
-        <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <a className="navbar-brand" href="/">Quiz App</a>
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className="collapse navbar-collapse" id="navbarCollapse">
-                <ul className="navbar-nav mr-auto">
-                    <li className="nav-item nav-link active">
-                        <NavLink to="/" activeStyle={activeStyle} exact>Home Page</NavLink>
-                    </li>
-                    <li className="nav-item nav-link">
-                        <NavLink to="/quiz-list" activeStyle={activeStyle} exact>Quiz List</NavLink>
-                    </li>
-                    <li className="nav-item nav-link">
-                        <NavLink to="/new-quiz" activeStyle={activeStyle} exact>New Quiz</NavLink>
-                    </li>
-                    <li className="nav-item nav-link">
-                        <NavLink to="/quiz/random" activeStyle={activeStyle} exact>Random Quiz</NavLink>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+        <Navbar bg="dark" variant="dark" expand="lg" style={{marginBottom: "5vmin"}}>
+            <Navbar.Brand href="/">Quiz App</Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+            <Navbar.Collapse id="basic-navbar-nav">
+                <Nav className="mr-auto">
+                    <Nav.Item>
+                        <Nav.Link eventKey="1" as={NavLink} exact to="/">
+                            Home
+                        </Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link eventKey="2" as={NavLink} exact to="/quiz-list">
+                            Quiz List
+                        </Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link eventKey="3" as={NavLink} exact to="/new-quiz">
+                            New Quiz
+                        </Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link eventKey="4" as={NavLink} exact to="/quiz/random">
+                            Random Quiz
+                        </Nav.Link>
+                    </Nav.Item>
+                </Nav>
+            </Navbar.Collapse>
+        </Navbar>
     )
 }
 
