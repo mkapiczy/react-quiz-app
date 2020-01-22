@@ -1,5 +1,5 @@
 import _ from "lodash";
-import React, {useState} from "react";
+import React from "react";
 import {Answer} from "../../../types";
 import AnswerCard from "../AnswerCard/AnswerCard";
 

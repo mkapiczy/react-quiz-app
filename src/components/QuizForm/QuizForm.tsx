@@ -38,7 +38,7 @@ const QuizForm: React.FC<Props> = (props: Props) => {
     const saveQuiz = () => {
         if (isQuizValid()) {
             props.actions.createQuiz(quiz)
-            history.push('/list');
+            history.push('/quiz/list');
         } else {
             setIsValid(false)
         }

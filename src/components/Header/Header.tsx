@@ -14,13 +14,16 @@ const Header: React.FC = () => {
             <div className="collapse navbar-collapse" id="navbarCollapse">
                 <ul className="navbar-nav mr-auto">
                     <li className="nav-item nav-link active">
-                        <NavLink to="/" activeStyle={activeStyle} exact>Quiz</NavLink>
+                        <NavLink to="/" activeStyle={activeStyle} exact>Home Page</NavLink>
                     </li>
                     <li className="nav-item nav-link">
-                        <NavLink to="/list" activeStyle={activeStyle} exact>Quiz List</NavLink>
+                        <NavLink to="/quiz/list" activeStyle={activeStyle} exact>Quiz List</NavLink>
                     </li>
                     <li className="nav-item nav-link">
                         <NavLink to="/quiz/new" activeStyle={activeStyle} exact>New Quiz</NavLink>
+                    </li>
+                    <li className="nav-item nav-link">
+                        <NavLink to="/quiz/random" activeStyle={activeStyle} exact>Random Quiz</NavLink>
                     </li>
                 </ul>
             </div>

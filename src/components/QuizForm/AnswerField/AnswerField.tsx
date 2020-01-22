@@ -1,5 +1,5 @@
 import './AnswerField.scss'
-import React, {ChangeEvent, ReactPropTypes, useState} from 'react';
+import React, {ChangeEvent} from 'react';
 import {Answer} from "../../../types";
 import classNames from "classnames";
 
