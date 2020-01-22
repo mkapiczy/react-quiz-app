@@ -4,12 +4,14 @@
 
 .second-row {
   margin-top: 1vmin;
+
+  .btn-with-margin {
+    margin-right: 5vmin;
+    margin-left: 5vmin;
+  }
 }
 
 .third-row {
-  margin-top: 3vmin;
+  margin-top: 1vmin;
 }
 
-.btn-with-margin {
-  margin: 5px;
-}

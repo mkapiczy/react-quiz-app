@@ -7,8 +7,9 @@ import {bindActionCreators, Dispatch} from "redux";
 import _ from 'lodash'
 import QuizFormButtonGroup from "./QuizFormButtonGroup/QuizFormButtonGroup";
 import QuizFormHeading from "./QuizFormHeading/QuizFormHeading";
-import QuestionsForm from "./QuestionsForm/QuestionsForm";
 import {useHistory} from 'react-router-dom'
+import QuizTitleCardField from "./QuizTitleCardField/QuizTitleCardField";
+import QuestionFormField from "./QuestionField/QuestionFormField";
 
 type PropsFromRedux = ConnectedProps<typeof connectStateAndProps>
 type Props = PropsFromRedux
@@ -82,7 +83,9 @@ const QuizForm: React.FC<Props> = (props: Props) => {
         <div id="quizForm" className="container-fluid">
             <QuizFormHeading quizTitle={quiz.title} onQuizTitleChange={handleQuizTitleChange} isValid={isValid}
                              onCloseTooltip={resetIsValid}/>
-            <QuestionsForm question={quiz.questions[currentQuestionId - 1]}
+            <QuizTitleCardField isValid={isValid} quizTitle={quiz.title} handleQuizTitleChange={handleQuizTitleChange}
+                                onCancelTooltip={resetIsValid}/>
+            <QuestionFormField question={quiz.questions[currentQuestionId - 1]}
                            totalNumberOfQuestions={quiz.questions.length}
                            onQuestionChange={handleQuestionChange}/>
             <QuizFormButtonGroup currentQuestionId={currentQuestionId} totalNumberOfQuestions={quiz.questions.length}

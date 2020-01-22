@@ -16,7 +16,7 @@ const QuizFormButtonGroup: React.FC<Props> = (props: Props) => {
     const isNextQuestionDisabled = () => props.currentQuestionId >= props.totalNumberOfQuestions
     const isDeleteQuestionDisabled = () => props.totalNumberOfQuestions === 1
     return (
-        <div className="container buttons">
+        <div className="container-fluid buttons">
             <div className="row first-row">
                 <div className="col text-center">
                     <button type="button" className="btn btn-primary mb-2 btn-with-margin"
@@ -25,6 +25,7 @@ const QuizFormButtonGroup: React.FC<Props> = (props: Props) => {
                         Previous Question
                     </button>
                 </div>
+
                 <div className="col text-center">
                     <button type="button" className="btn btn-primary mb-2 btn-with-margin"
                             disabled={isNextQuestionDisabled()}
@@ -32,7 +33,9 @@ const QuizFormButtonGroup: React.FC<Props> = (props: Props) => {
                         Next Question
                     </button>
                 </div>
+
             </div>
+
             <div className="row second-row">
                 <div className="col text-center">
                     <button type="button" className="btn btn-dark mb-2 btn-with-margin"
@@ -44,7 +47,6 @@ const QuizFormButtonGroup: React.FC<Props> = (props: Props) => {
                             onClick={props.addQuestion}>
                         New Question
                     </button>
-
                 </div>
             </div>
             <div className="row third-row">
