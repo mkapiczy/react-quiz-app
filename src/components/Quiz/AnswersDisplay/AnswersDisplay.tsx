@@ -22,7 +22,7 @@ const AnswersDisplay: React.FC<Props> = (props: Props) => {
     return (
         <ol className="list-group list-group-flush answers-list">
             {_.chunk(props.answers, 2).map(a =>
-                <div className="row">
+                <div key={a[0].id} className="row">
                     <AnswerCard isCorrect={props.isAnswerCorrect} isSelected={isSelected(a[0])}
                                 answer={a[0]} handleSelectAnswer={handleSelectAnswer}/>
                     <AnswerCard isCorrect={props.isAnswerCorrect} isSelected={isSelected(a[1])}

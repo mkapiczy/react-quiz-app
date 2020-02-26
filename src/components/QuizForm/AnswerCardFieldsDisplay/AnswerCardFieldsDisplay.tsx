@@ -30,7 +30,7 @@ const AnswerCardFieldsDisplay: React.FC<Props> = (props: Props) => {
     return (
         <ol className="list-group list-group-flush answers-list">
             {_.chunk(props.question.answers, 2).map(a =>
-                <div className="row">
+                <div key={a[0].id} className="row">
                     <AnswerCardField2 isCorrect={isAnswerCorrect(a[0])} answer={a[0]}
                                       onChange={handleAnswerChange} onIsCorrectChanged={handleCorrectAnswerChanged}/>
                     <AnswerCardField2 isCorrect={isAnswerCorrect(a[1])} answer={a[1]}
