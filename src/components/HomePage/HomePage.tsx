@@ -27,16 +27,16 @@ const HomePage: React.FC = () => {
                         </div>
                     </div>
                 </div>
-                <div className="row card-row">
-                    <div className="card bg-light home-card text-center">
-                        <div className="card-header font-weight-bold">
-                            <NavLink to="/quiz/random" exact>Take a randomly generated quiz based on Open Trivia API</NavLink>
-                        </div>
-                        <div className="card-body">
-                            Try your luck with our random quiz generator!
-                        </div>
-                    </div>
-                </div>
+                {/*<div className="row card-row">*/}
+                {/*    <div className="card bg-light home-card text-center">*/}
+                {/*        <div className="card-header font-weight-bold">*/}
+                {/*            <NavLink to="/quiz/random" exact>Take a randomly generated quiz based on Open Trivia API</NavLink>*/}
+                {/*        </div>*/}
+                {/*        <div className="card-body">*/}
+                {/*            Try your luck with our random quiz generator!*/}
+                {/*        </div>*/}
+                {/*    </div>*/}
+                {/*</div>*/}
             </div>
         </div>
     )

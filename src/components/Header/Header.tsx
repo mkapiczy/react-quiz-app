@@ -25,11 +25,11 @@ const Header: React.FC = () => {
                             New Quiz
                         </Nav.Link>
                     </Nav.Item>
-                    <Nav.Item>
-                        <Nav.Link eventKey="4" as={NavLink} exact to="/quiz/random">
-                            Random Quiz
-                        </Nav.Link>
-                    </Nav.Item>
+                    {/*<Nav.Item>*/}
+                    {/*    <Nav.Link eventKey="4" as={NavLink} exact to="/quiz/random">*/}
+                    {/*        Random Quiz*/}
+                    {/*    </Nav.Link>*/}
+                    {/*</Nav.Item>*/}
                 </Nav>
             </Navbar.Collapse>
         </Navbar>
